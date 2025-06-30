@@ -3,6 +3,9 @@ package com.devsenior;
 public class Main {
     public static void main(String[] args) {
         ejercicio2();
+        for(int i=0; i < args.length; i++){
+          System.out.println("argumento " + i + ": " + args[i]);
+        }
     }
 
     public static void ejercicio1(){
