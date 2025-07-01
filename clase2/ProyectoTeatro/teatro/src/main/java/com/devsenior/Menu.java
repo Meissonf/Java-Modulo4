@@ -41,10 +41,50 @@ public class Menu {
         for(int i =0; i < mapa.length; i++){
             System.out.print("Fila " + i + ": ");
             for(int j = 0; j < mapa[i].length; j++){
-                System.out.println(mapa[i][j] == EstadoAsiento.LIBRE ? "L" : "O");
+                System.out.print(mapa[i][j] == EstadoAsiento.LIBRE ? "L " : "O ");
             }
             System.out.println();
         }
+    }
+
+    private void reservar() {
+        int fila = leerEntero("Ingrese la fila: ");
+        int col = leerEntero("Ingrese la columna: ");
+        try {
+            sala.reservar(fila, col);
+            System.out.println("Reserva realizada exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private void cancelar() {
+        int fila = leerEntero("Ingrese la fila: ");
+        int col = leerEntero("Ingrese la columna: ");
+        try {
+            sala.cancelarReserva(fila, col);
+            System.out.println("Reserva cancelada exitosamente.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private void mostrarEstadisticas() {
+        int[] stats = sala.calcularEstadisticas();
+        int total = stats[0] + stats[1];
+        double porcentaje = (stats[1] * 100.0) / total;
+        System.out.println("\nAsientos disponibles: " + stats[0]);
+        System.out.println("Asientos ocupados: " + stats[1]);
+        System.out.printf("Porcentaje de ocupación: %.2f%%\n", porcentaje);
+    }
+
+    private int leerEntero(String mensaje) {
+        System.out.print(mensaje);
+        while (!scanner.hasNextInt()) {
+            System.out.print("Entrada inválida. " + mensaje);
+            scanner.next();
+        }
+        return scanner.nextInt();
     }
 
 }
