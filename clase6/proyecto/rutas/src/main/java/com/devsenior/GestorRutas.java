@@ -45,5 +45,15 @@ public class GestorRutas {
         return recomendadas;
     }
 
+    public void mostrarTodasLasRutas() {
+        if (rutas.isEmpty()) {
+            System.out.println("No hay rutas registradas.");
+        } else {
+            for (RutaTuristica ruta : rutas) {
+                System.out.println(ruta);
+                System.out.println("----------------------------------------");
+            }
+        }
+    }
 
 }
