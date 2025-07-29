@@ -29,9 +29,7 @@ public class Main {
         .collect(Collectors.toList());
 
         System.out.println("Peliculas recomendadas para ti del género " + generoPreferido + ": " + recomendaciones);
-        
-
-
+    
 
     }
 }
